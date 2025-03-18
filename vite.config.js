@@ -3,9 +3,11 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  server: {
-    allowedHosts: ["subsection-kurt-listen-slim.trycloudflare.com"],
-  },
-})
+	plugins: [react()],
+	server: {
+		allowedHosts: ["subsection-kurt-listen-slim.trycloudflare.com"],
+	},
+
+	base: "/codeConversion",
+});
 
