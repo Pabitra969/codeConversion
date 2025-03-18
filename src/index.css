@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+  body {
+    @apply bg-gradient-to-l from-[#0B0C10] to-[#1F2833] font-poppins
+  }
+}
+
+@layer utilities {
+  .g1 {
+      background: linear-gradient(rgba(196, 203, 245, 0.5), transparent);
+    }
+  
+    .g2 {
+      background: linear-gradient(#3062a3, #19549f);
+    }
+  
+    .g3 {
+      background: linear-gradient(#3c52d9, #0c1838);
+    }
+  
+    .g4 {
+      background: linear-gradient(#253575, #162561);
+    }
+  
+    .g5 {
+      background: linear-gradient(#334679, #162561);
+    }
+  
+    .g6 {
+      background: linear-gradient(#334679, #0c1838);
+    }
+  
+    .g7 {
+      background: linear-gradient(#1b275a, #0e1434);
+    }
+  
+    .g8 {
+      background: linear-gradient(to right, transparent, #2ef2ff, transparent);
+    }
+  
+    .g9 {
+      background: linear-gradient(#080d27, transparent);
+    }
+
+
+
+  .hover-header {
+    @apply hover:cursor-pointer hover:text-[#5bfcff] hover:transition-colors hover:duration-500
+  }
+
+  .logo-before {
+    @apply before:
+  }
+
+  .base-bold {
+    @apply text-[16px] font-bold leading-[24px]
+  }
+
+  .button-hover {
+    @apply hover:bg-gray-500 hover:duration-500 hover:border-stone-200 
+  }
+
+    .inner-before {
+      @apply before:g7 before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-500 before:content-[''];
+    }
+}
