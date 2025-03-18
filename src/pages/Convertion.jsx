@@ -25,7 +25,7 @@ const Convertion = () => {
 		try {
 			setResponse(
 				await fetch(
-					"https://relationships-so-controlled-prohibited.trycloudflare.com/chat",
+					"https://wrapped-jewelry-timely-cho.trycloudflare.com/chat",
 					{
 						method: "POST",
 						headers: {
