@@ -22,30 +22,27 @@ const Convertion = () => {
 	const [response, setResponse] = useState("")
 
 	const handleClicGenerate = async () => {
-		try {
-			setResponse(
-				await fetch(
-					"https://vista-blake-agreement-olive.trycloudflare.com/chat",
+		const res = await fetch("https://bc86-34-86-116-209.ngrok-free.app/chat", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				model: "mymodel",
+				stream: false,
+				messages: [
 					{
-						mode: "no-cors",
-						method: "POST",
-					}
-				)
-			);
+						role: "user",
+						content: "Hello",
+					},
+				],
+			}),
+		});
 
-			const data = await response.json();
-			console.log("API Response:", data);
+		const data = await res.json(); // Convert response to JSON
+		console.log("API Response:", data); // Log response
 
-			// Update output code if API returns a new value
-			// if (data.convertedCode) {
-			// 	setCode2(data.convertedCode);
-			// }
-
-			
-			
-		} catch (error) {
-			console.error("Error calling API:", error);
-		}
+		setResponse(data);
 	};
 
 	// useEffect(() => {
