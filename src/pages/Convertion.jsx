@@ -11,17 +11,24 @@ const Convertion = () => {
 	const [code, setCode] = useState("");
 	const [code2, setCode2] = useState("");
 
-	useEffect(() => {
-		setCode(LANGUAGES[language]);
-
-		setCode2(LANGUAGES[language2]);
-
-	}, [language, language2]);
-
-
 	const [response, setResponse] = useState("")
 
+	const [loading, setLoading] = useState(false)
+	
+	useEffect(() => {
+		setCode2(response);
+	}, [response]);
+
+	useEffect(() => {
+		setCode(LANGUAGES[language])
+	}, [language])
+	
+
+
+
 	const handleClicGenerate = async () => {
+		setCode2("");
+		setLoading(true);
 		const res = await fetch("https://bc86-34-86-116-209.ngrok-free.app/chat", {
 			method: "POST",
 			headers: {
@@ -33,7 +40,7 @@ const Convertion = () => {
 				messages: [
 					{
 						role: "user",
-						content: "Hello",
+						content: `${code} convert this code to ${language2} & also just give the code no extra line or any text`,
 					},
 				],
 			}),
@@ -42,7 +49,26 @@ const Convertion = () => {
 		const data = await res.json(); // Convert response to JSON
 		console.log("API Response:", data); // Log response
 
-		setResponse(data);
+		console.log(data?.message?.content);
+
+		let messageContent = data?.message?.content || "";
+
+		// Remove the first occurrence of ```java (if it exists)
+		if (messageContent.startsWith("```java")) {
+			messageContent = messageContent.replace("```java", "").trim();
+		}
+
+		// Remove the last occurrence of ``` (if it exists)
+		if (messageContent.endsWith("```")) {
+			messageContent = messageContent.slice(0, -3).trim();
+		}
+		
+
+		console.log(messageContent);
+		setResponse(messageContent); // Store cleaned response
+
+		// setResponse(data);
+		setLoading(false);
 	};
 
 	// useEffect(() => {
@@ -71,7 +97,15 @@ const Convertion = () => {
 				</div>
 			</div>
 			<div className="bottom-2 mt-6 flex justify-center">
-				<Button onclick={handleClicGenerate}>Convert</Button>
+				<Button onclick={handleClicGenerate}>
+					{loading ? (
+						<span>
+							<i class="fa fa-spinner fa-spin"></i> Loading
+						</span>
+					) : (
+						<span>Generate</span>
+					)}
+				</Button>
 			</div>
 		</div>
 	);
