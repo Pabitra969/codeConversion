@@ -25,23 +25,10 @@ const Convertion = () => {
 		try {
 			setResponse(
 				await fetch(
-					"https://wrapped-jewelry-timely-cho.trycloudflare.com/chat",
+					"https://vista-blake-agreement-olive.trycloudflare.com/chat",
 					{
+						mode: "no-cors",
 						method: "POST",
-						headers: {
-							"Content-Type": "application/json",
-						},
-						mode: "cors", // Ensure CORS is enabled
-						body: JSON.stringify({
-							model: "mymodel",
-							stream: false,
-							messages: [
-								{
-									role: "user",
-									content: `${code} covert this code to ${language2}`,
-								},
-							],
-						}),
 					}
 				)
 			);

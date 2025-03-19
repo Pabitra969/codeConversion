@@ -8,6 +8,6 @@ export default defineConfig({
 		allowedHosts: ["subsection-kurt-listen-slim.trycloudflare.com"],
 	},
 
-	base: "/codeConversion",
+	base: "/",
 });
 
